@@ -1,0 +1,19 @@
+/* AdminPage.css */
+
+/* ตั้ง z-index ให้ DatePicker popup ให้แสดงอยู่บนสุด */
+.react-datepicker-popper {
+  z-index: 1050 !important;
+}
+
+/* ปรับขนาดปุ่มจัดการให้เล็กลง */
+.btn-action-small {
+  padding: 4px 8px;
+  font-size: 12px;
+  height: 28px;
+  min-width: 28px;
+}
+
+/* ปรับระยะห่างของ Space รอบปุ่มให้เหมาะสม */
+.ant-space {
+  gap: 6px !important;
+}

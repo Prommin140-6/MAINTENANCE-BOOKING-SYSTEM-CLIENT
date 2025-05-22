@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* หน้า Booking */
+.react-calendar {
+  background: #ffffff !important;
+  border: 2px solid #ffd700 !important;
+  border-radius: 10px !important;
+}
+.react-calendar__tile--active {
+  background: #ffd700 !important;
+  color: #000000 !important;
+}
+.react-calendar__tile--now {
+  background: #ffff00 !important;
+  color: #000000 !important;
+}
+.react-calendar__tile:hover {
+  background: #ffff00 !important;
+  color: #000000 !important;
+}
+
+/* หน้า Admin */
+.ant-table {
+  background: #FFFFFF !important;
+  color: #000000 !important;
+}
+.ant-table-thead > tr > th {
+  background: #FFD700 !important;
+  color: #000000 !important;
+}
+.ant-table-tbody > tr:hover > td {
+  background: #FFFFE0 !important;
+}

@@ -1,0 +1,138 @@
+.react-datepicker-popper-custom {
+  z-index: 1000 !important;
+}
+
+.react-datepicker {
+  font-family: Arial, sans-serif;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  padding: 10px;
+}
+
+.react-datepicker__header {
+  background-color: #f0f0f0;
+  border-bottom: none;
+  padding: 10px 0;
+}
+
+.react-datepicker__day-name,
+.react-datepicker__day {
+  width: 2rem;
+  line-height: 2rem;
+  margin: 0;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  background-color: #007bff;
+  color: white;
+  border-radius: 50%;
+}
+
+.react-datepicker__day:hover {
+  background-color: #e9ecef;
+  border-radius: 50%;
+}
+
+/* สไตล์สำหรับ Modal สรุปการจอง */
+.confirmation-modal .ant-modal-content {
+  background-color: #1f1f1f;
+  border: 2px solid #896253;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  max-width: 90%;
+  width: 300px; /* ความกว้างเริ่มต้น */
+  margin: 0 auto;
+}
+
+.confirmation-modal .ant-modal-body {
+  padding: 16px;
+}
+
+.confirmation-modal h2 {
+  color: #CD9969;
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+.confirmation-modal .booking-details {
+  background-color: #2a2a2a;
+  border: 1px solid #896253;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.confirmation-modal .booking-details p {
+  color: #CD9969;
+  margin: 6px 0;
+  font-size: 0.875rem; /* ลดขนาดฟอนต์ */
+}
+
+.confirmation-modal .booking-details p span {
+  color: #8a7d5a;
+}
+
+.confirmation-modal .screenshot-notice {
+  background-color: #2a2a2a;
+  border: 1px solid #CD9969;
+  border-radius: 6px;
+  padding: 8px;
+  color: #CD9969;
+  font-weight: bold;
+  text-align: center;
+  font-size: 0.75rem;
+}
+
+.confirmation-modal .screenshot-notice .anticon {
+  color: #CD9969;
+  font-size: 14px;
+}
+
+.confirmation-modal .contact-info {
+  text-align: center;
+  color: #CD9969;
+  font-size: 0.75rem;
+}
+
+.confirmation-modal .contact-info p {
+  margin: 4px 0;
+}
+
+.confirmation-modal .contact-info a {
+  color: #CD9969;
+  font-weight: bold;
+}
+
+.confirmation-modal .contact-info a:hover {
+  color: #b3894f;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) { /* Mobile */
+  .confirmation-modal .ant-modal-content {
+    width: 90%;
+    max-width: 280px;
+  }
+  .confirmation-modal h2 {
+    font-size: 1rem;
+  }
+  .confirmation-modal .booking-details p {
+    font-size: 0.75rem;
+  }
+  .confirmation-modal .screenshot-notice {
+    font-size: 0.7rem;
+  }
+  .confirmation-modal .contact-info {
+    font-size: 0.7rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) { /* Tablet */
+  .confirmation-modal .ant-modal-content {
+    width: 80%;
+    max-width: 350px;
+  }
+}
