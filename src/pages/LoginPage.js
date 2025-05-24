@@ -12,16 +12,9 @@ const LoginPage = () => {
     try {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/admin/login`, values);
       const { token } = response.data;
-
-      // เก็บ token
       localStorage.setItem('token', token);
-
-      // 🔥 แจ้ง App.js ว่ามีการเปลี่ยนแปลง localStorage เพื่อให้ useEffect ทำงาน
       window.dispatchEvent(new Event('storage'));
-
       message.success('เข้าสู่ระบบสำเร็จ');
-
-      // ไปหน้า admin dashboard
       navigate('/admin');
     } catch (error) {
       const errorMessage = error.response?.data?.message || 'เข้าสู่ระบบล้มเหลว';
