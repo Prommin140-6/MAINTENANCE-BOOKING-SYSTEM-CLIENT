@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Form, Input, message, Modal } from 'antd';
+import { Button, Form, Input, message } from 'antd';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -7,6 +7,7 @@ import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import Swal from 'sweetalert2';
 import logo from './ถึงแก่นLOGO.png';
 import './MaintenancePage.css';
+import ConfirmationModal from './ConfirmationModal'; // นำเข้า ConfirmationModal
 
 const MaintenancePage = () => {
   const [form] = Form.useForm();
@@ -32,7 +33,6 @@ const MaintenancePage = () => {
     try {
       const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/maintenance/booked-dates`);
       console.log('Booked dates from server:', response.data.bookedDates);
-      // ถ้าเป็น array ของ string (เช่น ["2025-05-22", "2025-05-23"])
       const bookedDatesArray = Array.isArray(response.data.bookedDates) ? response.data.bookedDates : [];
       setBookedDates(bookedDatesArray);
     } catch (error) {
@@ -126,7 +126,7 @@ const MaintenancePage = () => {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/maintenance`, maintenanceData);
       setMaintenanceDetails({
         ...maintenanceData,
-        status: 'รอการยืนยันจากแอดมิน',
+        status: 'pending',
       });
       await Swal.fire({
         icon: 'success',
@@ -139,7 +139,7 @@ const MaintenancePage = () => {
       setSelectedDate(null);
       setDateOffset(0);
       setShowDatePicker(false);
-      await fetchBookedDates(); // อัปเดต bookedDates หลังจองสำเร็จ
+      await fetchBookedDates();
     } catch (error) {
       const errorMessage = error.response?.data?.message || error.message;
       message.error(`การส่งคำขอล้มเหลว: ${errorMessage}`);
@@ -294,49 +294,22 @@ const MaintenancePage = () => {
               ส่งคำขอ
             </Button>
           </Form.Item>
+
+          <Form.Item>
+            <Button
+              href="/check-status" // ลิงก์ไปยังหน้า CheckStatusPage.js
+              className="w-full rounded-lg bg-[#443833] hover:bg-[#5c4739] text-[#CD9969] border border-[#896253] px-4 py-2 text-sm font-semibold uppercase tracking-wider shadow-md hover:shadow-lg transition-all duration-300"
+            >
+              ไปหน้าเช็คสถานะ
+            </Button>
+          </Form.Item>
         </Form>
 
-        <Modal
-          open={isConfirmationModalVisible} // เปลี่ยนจาก visible เป็น open
-          onCancel={handleModalClose}
-          footer={null}
-          className="confirmation-modal"
-          centered
-        >
-          <div className="flex flex-col items-center">
-            <img src={logo} alt="Maintenance logo" className="w-24 h-auto mb-3" />
-            <h2 className="text-xl font-bold uppercase mb-3 tracking-wide">ส่งคำขอสำเร็จ!</h2>
-            {maintenanceDetails && (
-              <div className="w-full">
-                <div className="maintenance-details">
-                  <p><span className="font-semibold">ชื่อ:</span> {maintenanceDetails.name}</p>
-                  <p><span className="font-semibold">เบอร์โทร:</span> {maintenanceDetails.phone}</p>
-                  <p><span className="font-semibold">รุ่นรถ:</span> {maintenanceDetails.carModel}</p>
-                  <p><span className="font-semibold">หมายเลขทะเบียน:</span> {maintenanceDetails.licensePlate}</p>
-                  <p><span className="font-semibold">วันที่สะดวก:</span> {maintenanceDetails.preferredDate}</p>
-                  <p><span className="font-semibold">สถานะ:</span> {maintenanceDetails.status}</p>
-                </div>
-                <div className="screenshot-notice flex items-center justify-center mt-3">
-                  <span className="mr-1">📸</span>
-                  <p>กรุณาแคปหน้าจอนี้เพื่อใช้เป็นหลักฐาน</p>
-                </div>
-                <div className="contact-info mt-3 text-center">
-                  <p>หากมีปัญหา กรุณาติดต่อที่:</p>
-                  <p>
-                    โทร: <a href="tel:0812345678" className="underline">081-234-5678</a>
-                  </p>
-                  <p>LINE: <a href="https://line.me/ti/p/@shopname" target="_blank" rel="noopener noreferrer" className="underline">@shopname</a></p>
-                </div>
-              </div>
-            )}
-            <Button
-              onClick={handleModalClose}
-              className="mt-4 rounded-lg bg-gradient-to-r from-[#CD9969] to-[#896253] text-black font-bold uppercase tracking-wide shadow-lg hover:from-[#b3894f] hover:to-[#735a42] transition-all duration-300 h-10 w-full"
-            >
-              กลับสู่หน้าหลัก
-            </Button>
-          </div>
-        </Modal>
+        <ConfirmationModal
+          open={isConfirmationModalVisible}
+          onClose={handleModalClose}
+          details={maintenanceDetails}
+        />
       </div>
     </div>
   );
