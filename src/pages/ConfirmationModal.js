@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal, Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import { CameraOutlined } from '@ant-design/icons'; // นำเข้า CameraOutlined
 import logo from './ถึงแก่นLOGO.png';
 
 const ConfirmationModal = ({ open, onClose, details }) => {
@@ -23,10 +24,10 @@ const ConfirmationModal = ({ open, onClose, details }) => {
     if (!isoDate) return '';
     const date = new Date(isoDate);
     return date.toLocaleDateString('th-TH', {
-      weekday: 'long', // แสดงชื่อวัน เช่น วันอาทิตย์
-      day: 'numeric',  // แสดงวันที่ เช่น 25
-      month: 'long',   // แสดงชื่อเดือน เช่น พฤษภาคม
-      year: 'numeric', // แสดงปี เช่น 2025
+      weekday: 'long',
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
     });
   };
 
@@ -62,9 +63,9 @@ const ConfirmationModal = ({ open, onClose, details }) => {
                 <span className={`font-semibold ${statusColor}`}>{statusText}</span>
               </p>
             </div>
-            <div className="screenshot-notice flex items-center justify-center mt-3">
-              <span className="mr-1">📸</span>
-              <p>กรุณาแคปหน้าจอนี้เพื่อใช้เป็นหลักฐาน</p>
+            <div className="screenshot-notice inline-flex items-center justify-center mt-3">
+              <CameraOutlined className="mr-1" /> {/* เปลี่ยน emoji เป็น CameraOutlined */}
+              <span>กรุณาแคปหน้าจอนี้เพื่อใช้เป็นหลักฐาน</span> {/* เปลี่ยน p เป็น span */}
             </div>
             <div className="contact-info mt-3 text-center">
               <p>หากมีปัญหา กรุณาติดต่อที่:</p>

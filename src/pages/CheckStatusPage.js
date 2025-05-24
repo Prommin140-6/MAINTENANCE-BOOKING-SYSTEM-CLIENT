@@ -99,7 +99,7 @@ const CheckStatusPage = () => {
               <p>หากมีปัญหา กรุณาติดต่อที่:</p>
               <p>
                 โทร: <a href="tel:0826595365" className="underline">082-659-5365</a> ,{' '}
-                <a href="tel:0636869999" className="underline">063-686-9999</a>
+                     <a href="tel:0636869999" className="underline">063-686-9999</a>
               </p>
               <p>
                 LINE: <a href="https://line.me/R/ti/p/@259xpcyb" target="_blank" rel="noopener noreferrer" className="underline">@thuengkaen_th</a>
