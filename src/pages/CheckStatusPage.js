@@ -96,11 +96,13 @@ const CheckStatusPage = () => {
           <div className="mt-4 text-center">
             <p className="text-red-500 font-semibold">ไม่พบคำขอ กรุณาติดต่อแอดมิน</p>
             <div className="contact-info mt-2 text-[#CD9969]">
+              <p>หากมีปัญหา กรุณาติดต่อที่:</p>
               <p>
-                โทร: <a href="tel:0812345678" className="underline">081-234-5678</a>
+                โทร: <a href="tel:0826595365" className="underline">082-659-5365</a> ,{' '}
+                <a href="tel:0636869999" className="underline">063-686-9999</a>
               </p>
               <p>
-                LINE: <a href="https://line.me/ti/p/@shopname" target="_blank" rel="noopener noreferrer" className="underline">@shopname</a>
+                LINE: <a href="https://line.me/R/ti/p/@259xpcyb" target="_blank" rel="noopener noreferrer" className="underline">@thuengkaen_th</a>
               </p>
             </div>
             <Button
